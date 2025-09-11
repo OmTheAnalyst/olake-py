@@ -48,6 +48,16 @@ It enables schema-aware CDC and Bronze → Silver promotion inside Databricks (S
 - **Databricks**: store secrets in Databricks Secrets (workspace scope).  
 - A `.env.example` file is provided as a template — fill values locally or in CI/CD as appropriate.
 
+## Databricks Prereqs
+
+- **Workspace Access**: Confirm you have a Databricks workspace (Free Edition is fine).
+- **Cluster**: Create a single cluster (DBR 14 LTS or 15 LTS recommended).
+- **Personal Access Token (PAT)**: Generate a PAT and store it in Databricks Secrets (note the last-8 chars for tracking).
+- **Silver Target for MVP**: Delta tables stored in DBFS (simplest option).  
+  - Cloud storage Delta can be considered later once credentials are wired.  
+- **Workspace Folder for Examples**: Use `/Repos/olake-py/examples` as the default location.
+
+
 
 
 
