@@ -58,6 +58,18 @@ It enables schema-aware CDC and Bronze → Silver promotion inside Databricks (S
 - **Workspace Folder for Examples**: Use `/Repos/olake-py/examples` as the default location.
 
 
+## Sandbox Plan
+
+- **Services & Ports**:
+  - OLake API → 8080
+  - Postgres → 5432
+  - MinIO → 9000 (API), 9001 (console)
+- **Docker Volumes**:
+  - Use a single root folder: `sandbox/.data/`
+- **Services**:
+  - MinIO (for S3)
+  - Postgres (for metadata)
+  - Optional: Nessie (for Iceberg catalog) — not required for MVP
 
 
 
