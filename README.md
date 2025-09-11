@@ -72,4 +72,20 @@ It enables schema-aware CDC and Bronze → Silver promotion inside Databricks (S
   - Optional: Nessie (for Iceberg catalog) — not required for MVP
 
 
+## Definition of Done – Phase 0
+
+- Mission, Scope, and Outcomes documented in README.
+- Engineering Conventions (Python version, packaging, branch/commit style) documented.
+- GitHub hygiene set up:
+  - Branch protection on `main`
+  - Labels created
+  - Project board created
+  - Issue & PR templates in place
+  - CODEOWNERS added
+- Secrets Policy documented and `.env.example` committed.
+- Repo skeleton structure created with placeholder READMEs.
+- Databricks prerequisites documented.
+- Sandbox Plan documented.
+
+
 
