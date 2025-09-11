@@ -41,4 +41,13 @@ It enables schema-aware CDC and Bronze → Silver promotion inside Databricks (S
     Example: `feature/cdc-client`, `feature/add-tests`
 
 
+## Secrets Policy
+
+- **Local Development**: use a `.env` file with required keys. Never commit real values.  
+- **CI/CD (GitHub)**: store secrets in GitHub Secrets.  
+- **Databricks**: store secrets in Databricks Secrets (workspace scope).  
+- A `.env.example` file is provided as a template — fill values locally or in CI/CD as appropriate.
+
+
+
 
