@@ -41,4 +41,51 @@ It enables schema-aware CDC and Bronze → Silver promotion inside Databricks (S
     Example: `feature/cdc-client`, `feature/add-tests`
 
 
+## Secrets Policy
+
+- **Local Development**: use a `.env` file with required keys. Never commit real values.  
+- **CI/CD (GitHub)**: store secrets in GitHub Secrets.  
+- **Databricks**: store secrets in Databricks Secrets (workspace scope).  
+- A `.env.example` file is provided as a template — fill values locally or in CI/CD as appropriate.
+
+## Databricks Prereqs
+
+- **Workspace Access**: Confirm you have a Databricks workspace (Free Edition is fine).
+- **Cluster**: Create a single cluster (DBR 14 LTS or 15 LTS recommended).
+- **Personal Access Token (PAT)**: Generate a PAT and store it in Databricks Secrets (note the last-8 chars for tracking).
+- **Silver Target for MVP**: Delta tables stored in DBFS (simplest option).  
+  - Cloud storage Delta can be considered later once credentials are wired.  
+- **Workspace Folder for Examples**: Use `/Repos/olake-py/examples` as the default location.
+
+
+## Sandbox Plan
+
+- **Services & Ports**:
+  - OLake API → 8080
+  - Postgres → 5432
+  - MinIO → 9000 (API), 9001 (console)
+- **Docker Volumes**:
+  - Use a single root folder: `sandbox/.data/`
+- **Services**:
+  - MinIO (for S3)
+  - Postgres (for metadata)
+  - Optional: Nessie (for Iceberg catalog) — not required for MVP
+
+
+## Definition of Done – Phase 0
+
+- Mission, Scope, and Outcomes documented in README.
+- Engineering Conventions (Python version, packaging, branch/commit style) documented.
+- GitHub hygiene set up:
+  - Branch protection on `main`
+  - Labels created
+  - Project board created
+  - Issue & PR templates in place
+  - CODEOWNERS added
+- Secrets Policy documented and `.env.example` committed.
+- Repo skeleton structure created with placeholder READMEs.
+- Databricks prerequisites documented.
+- Sandbox Plan documented.
+
+
 
