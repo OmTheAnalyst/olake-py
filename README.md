@@ -1,4 +1,4 @@
-# olake-py
+# Olake-py
 ## Mission
 `olake-py` is a Python-first companion to OLake that helps data engineers trigger and monitor OLake jobs from Python.  
 It enables schema-aware CDC and Bronze → Silver promotion inside Databricks (Snowflake support will come later).
