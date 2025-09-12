@@ -1,0 +1,8 @@
+pyspark==3.5.0
+pandas
+requests
+flake8
+black
+pytest
+python-dotenv
+databricks-sql-connector[pyarrow]
