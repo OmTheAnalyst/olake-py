@@ -79,9 +79,7 @@ def demo():
 
     # Show results
     print("\n--- Bronze ---")
-    spark.sql(
-        "SELECT * FROM bronze_orders ORDER BY id, ts"
-    ).show(truncate=False)
+    spark.sql("SELECT * FROM bronze_orders ORDER BY id, ts").show(truncate=False)
 
     print("\n--- Silver ---")
     silver_df.show(truncate=False)
@@ -105,11 +103,8 @@ def connect():
                 ("DATABRICKS_SQL_PATH", http_path),
             ]
             if not v
-        ]
-        typer.echo(
-            "❌ Connection failed: missing env var(s): "
-            f"{', '.join(missing)}"
-        )
+            ]
+        typer.echo("❌ Connection failed: missing env var(s): " f"{', '.join(missing)}")
         return
 
     try:
@@ -167,9 +162,7 @@ def run_cdc(
             typer.echo(f"✅ CDC applied. Silver temp view: {silver_table}")
         elif mode == "file":
             df.write.mode("overwrite").parquet(silver_table)
-            typer.echo(
-                f"✅ CDC applied. Silver dataset written to: {silver_table}"
-            )
+            typer.echo(f"✅ CDC applied. Silver dataset written to: {silver_table}")
         else:
             typer.echo("❌ Invalid mode. Use 'view' or 'file'.")
     except Exception as e:
@@ -204,9 +197,7 @@ def gen_sample(
     if bronze_path.lower().startswith("view:"):
         view_name = bronze_path.split("view:", 1)[1].strip() or "bronze_orders"
         df.createOrReplaceTempView(view_name)
-        typer.echo(
-            f"✅ Sample Bronze temp view '{view_name}' created (in memory)."
-        )
+        typer.echo(f"✅ Sample Bronze temp view '{view_name}' created (in memory).")
         return
 
     try:
