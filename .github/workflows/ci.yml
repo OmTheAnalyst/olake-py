@@ -23,7 +23,7 @@ jobs:
     - name: Install dependencies
       run: |
         cd ..
-        pip install -e ./olake-py
+        pip install -e .
         pip install pytest pyspark==3.5.0
 
     - name: Run tests
