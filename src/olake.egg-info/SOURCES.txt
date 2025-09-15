@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+src/olake/__init__.py
+src/olake/__version__.py
+src/olake/cdc.py
+src/olake/cli.py
+src/olake/config.py
+src/olake/databricks_cli.py
+src/olake.egg-info/PKG-INFO
+src/olake.egg-info/SOURCES.txt
+src/olake.egg-info/dependency_links.txt
+src/olake.egg-info/entry_points.txt
+src/olake.egg-info/requires.txt
+src/olake.egg-info/top_level.txt
+tests/test_cdc.py
+tests/test_cli.py
+tests/test_client.py

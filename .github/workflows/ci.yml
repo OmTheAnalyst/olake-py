@@ -1,0 +1,48 @@
+name: OLake CI
+
+on:
+  push:
+    branches: [ "feature/phase2", "main" ]
+  pull_request:
+    branches: [ "feature/phase2", "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Show workspace (debug)
+      run: |
+        pwd
+        ls -la
+        echo "--- try olake-py subdir ---"
+        ls -la olake-py || true
+
+    - name: Detect project directory
+      id: proj
+      shell: bash
+      run: |
+        set -e
+        if [ -f pyproject.toml ]; then
+          echo "dir=." >> "$GITHUB_OUTPUT"
+          echo "Detected project at repo root"
+        elif [ -f olake-py/pyproject.toml ]; then
+          echo "dir=olake-py" >> "$GITHUB_OUTPUT"
+          echo "Detected project in olake-py/"
+        else
+          echo "pyproject.toml not found in '.' or 'olake-py/'"
+          exit 1
+        fi
+
+    - name: Install package and test deps
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e "${{ steps.proj.outputs.dir }}"
+        pip install pytest pyspark==3.5.0
+
+    - name: Run tests
+      working-directory: ${{ steps.proj.outputs.dir }}
+      run: pytest -q

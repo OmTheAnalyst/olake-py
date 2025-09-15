@@ -1,0 +1,2 @@
+[console_scripts]
+olake = olake.cli:cli
